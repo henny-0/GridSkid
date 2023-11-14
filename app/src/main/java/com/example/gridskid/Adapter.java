@@ -11,57 +11,61 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class Adapter extends ArrayAdapter<Item> {
+public class Adapter extends ArrayAdapter<Shape> {
 
+    ArrayList<Shape> shapeArrayList;
+    Context context;
 
-    Context mContext;
-    int resourceId;
-    List <Item>  itemList;
-    public Adapter(Context context, int resource, List<Item> itemList) {
-        super(context, resource, itemList);
-        this.mContext = context;
-        this.resourceId = resource;
-        this.itemList = itemList;
+/*
+    public Adapter(ArrayList<Shape> shapeArrayList, Context context){
+        super(context, R.layout.grid_item,shapeArrayList);
+        this.shapeArrayList = shapeArrayList;
+        this.context = context;
+    }
+*/
+
+    public Adapter(ArrayList<Shape> shapeArrayList, Context context) {
+        super(context, R.layout.grid_item,shapeArrayList);
+        this.shapeArrayList = shapeArrayList;
+        this.context = context;
     }
 
-    static class ViewHolder{
-        ImageView imgItem;
-        TextView txtItem;
+    private static class Viewholder{
+        TextView shapeName;
+        ImageView shapeImg;
     }
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
-        View itemView = convertView;
-        ViewHolder holder = null;
+    public View getView (int position, @Nullable View convertView, @NonNull ViewGroup parent){
+        Shape shape = getItem(position);
+        Viewholder viewholder;
 
-        if (itemView == null)
-        {
-            final LayoutInflater layoutInflater =
-                    (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            itemView = layoutInflater.inflate(resourceId, parent, false);
-
-            holder = new ViewHolder();
-            holder.imgItem = (ImageView) itemView.findViewById(R.id.imageView);
-            holder.txtItem = (TextView) itemView.findViewById(R.id.textView);
-            itemView.setTag(holder);
+        if(convertView==null) {
+            viewholder = new Viewholder();
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.grid_item, parent, false);
+            viewholder.shapeName = convertView.findViewById(R.id.textView);
+            viewholder.shapeImg = convertView.findViewById(R.id.imageView);
+            convertView.setTag(viewholder);
         }
-        else
-        {
-            holder = (ViewHolder) itemView.getTag();
+        else{
+            viewholder = (Viewholder) convertView.getTag();
         }
 
-        Item item = getItem(position);
-        holder.imgItem.setImageResource(item.getImageID());
-        holder.txtItem.setText(item.getDescription());
-
-        return itemView;
+        viewholder.shapeName.setText(shape.getShapeName());
+        viewholder.shapeImg.setImageResource(shape.getShapeImg());
+        return convertView;
     }
+
 
 
 }
