@@ -70,34 +70,6 @@ public class MainActivity extends AppCompatActivity {
         Shape item12 = new Shape("Asuka Ami", R.drawable.animegirl1);
         itemList.add(item12);
 
-        Shape item13 = new Shape("Asami Aletta", R.drawable.animegirl1);
-        itemList.add(item13);
-
-        Shape item14 = new Shape("Ayano Umeko", R.drawable.animegirl1);
-        itemList.add(item14);
-
-        Shape item15 = new Shape("Hiroshi Scarlet", R.drawable.animegirl1);
-        itemList.add(item15);
-
-        Shape item16 = new Shape("Kanako Aiko", R.drawable.animegirl1);
-        itemList.add(item16);
-
-        Shape item17 = new Shape("Asuna Ayu", R.drawable.animegirl1);
-        itemList.add(item17);
-
-        Shape item18 = new Shape("Chihiro Emi", R.drawable.animegirl1);
-        itemList.add(item18);
-
-        Shape item19 = new Shape("Chouko Chika", R.drawable.animegirl1);
-        itemList.add(item19);
-
-        Shape item20 = new Shape("Rachelle Kiyomi", R.drawable.animegirl1);
-        itemList.add(item20);
-
-        Shape item21 = new Shape("Nami Hinata", R.drawable.animegirl1);
-        itemList.add(item21);
-
-
 
     }
 
